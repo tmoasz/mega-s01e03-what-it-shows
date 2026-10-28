@@ -1,0 +1,100 @@
+---
+layout: runbook
+title: '0002 · Split #4471 by cause, not subject'
+owner: tmoasz
+status: accepted
+reviewed: '2026-10-28'
+signature: 'v1.eyJzdWIiOiIyMDI0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMxODY0MzIsImV4cCI6MTc5MzI3MjgzMn0.J_BwV5rNE8OU1Q-gXLH7sfpZj7ghnY18HoR9TPhr3xU'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import EvidenceSummary from '#lib/kb/EvidenceSummary.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+**Decision:** supersede [decision 0001](/kb/decisions/0001-dedupe-by-subject/) and the
+[subject-only triage rule](/kb/triage/dedupe/) for new work. Preserve the accepted record
+as history; do not rewrite it. The desk should merge reports only after checking the
+same underlying cause. A shared subject is not evidence of a shared cause.
+
+## What #4471 really contains
+
+The [original incident page](/kb/incidents/4471/) says “Known. One issue, one fix queued.”
+Its own executable table disagrees. These are two separate problems, not two names for
+one bug. The following table runs the exported classifier against the tenant directory,
+after removing overlapping export rows by report ID.
+
+<CauseTable ticket={4471} />
+
+### Shared parser: month-first interpretation of day-first dates
+
+The shared parser reads month first even when a tenant writes day first. For example,
+R-41200 reports 7 April becoming 4 July. The supplied classifier assigns day-first
+app/email reports, and day-first booking-v2 form reports, to this group. Fix parsing
+against the tenant's date convention; regression coverage must include ambiguous dates
+such as 07/04 and a non-ambiguous date such as 23/04. This repo diagnoses the problem;
+it does not contain or claim to fix the production parser.
+
+### Booking-v3: a misleading MM/DD/YYYY hint
+
+The booking-v3 form prints MM/DD/YYYY while reading the entered date in a day-first
+tenant's convention. That is a separate user-interface contract problem. For a Spanish
+booking-v3 tenant, a person following the hint for 6 January may enter 01/06 and get
+1 June. R-41230 supplies that symptom. Align the hint with the form's actual locale
+interpretation. Test booking-v3 tenants independently of the shared-parser fix.
+
+The two issue counts are mutually exclusive classifier assignments. They are not a
+claim that every individual report's root cause has been reproduced. In particular,
+the exceptions below stay visible and must be investigated before closing the parser issue.
+
+## Evidence, counts and unresolved exceptions
+
+<EvidenceSummary />
+
+## When reports arrived is not when the desk merged them
+
+<QueueTimeline ticket={4471} />
+
+The chart distinguishes receivedAt from mergedAt. Do not interpret the large merge batch
+as the start of customer impact. Reports were already arriving in April; the July merge
+consolidated an existing queue. Dates in the source retain their stated offsets; weekly
+buckets follow the exported component's date-prefix convention, not a new UTC conversion.
+
+## Replacement triage rule
+
+1. Deduplicate export overlap by report ID, not by subject or row count.
+2. Read the body, identify the tenant, resolve its locale and booking-form version,
+   and record the channel. Browser locale and intakeTag are clues, not ground truth.
+3. Use the executable cause logic as a routing aid, then check that the symptom supports it.
+   Matching subjects can hide different causes; different subjects can describe the same cause.
+4. Merge only with an open ticket for the same evidenced problem. Keep uncertain reports
+   in an explicit investigation queue. A missing tenant is not a confirmed duplicate.
+5. Preserve conflicting evidence and source IDs. A one-day displacement or an invite
+   arriving before booking is not explained merely by a month/day parser label.
+6. Recompute report membership and counts when new data arrives. Re-read dependent pages
+   and decisions before relying on old prose. Keep received and merged chronology separate.
+
+<DedupeExplorer />
+
+The interactive explorer uses the original exported logic. For example, identical
+subjects from alder.physio through form and app resolve to different causes, while
+kettle.books app/email reports with different subjects resolve to the same cause.
+Unknown tenants need investigation; the classifier does not establish their cause.
+
+## Authority and maintenance
+
+This decision supersedes subject-only merging; it does not mark either product defect fixed.
+The old accepted decision remains unchanged for audit. The legacy triage and incident pages
+are retained as exported evidence, not instructions to continue using their contradicted prose.
+Source material is the support KB export dated 2026-10-04. The review date above records this
+analysis, not a claim that the export includes all later desk activity.
+
+Use the [public repository's issues](https://github.com/tmoasz/mega-s01e03-what-it-shows/issues)
+for current ticket states. The original JSON, tenant records and classifier are preserved
+alongside this page so another reader can reproduce the counts. Every computed table on this
+page comes from components; the final desk reference comes from the supplied signature.
+
+<RenderStamp {signature} />
