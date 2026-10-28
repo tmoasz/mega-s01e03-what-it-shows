@@ -1,0 +1,17 @@
+import{t as e}from"./DK3Fl9T5.js";import{E as t,I as n,R as r,r as i,t as a,w as o}from"./4ZmiEDEE.js";import{t as s}from"./E4yxVhQC.js";import{t as c}from"./CedzG90w.js";var l=e({default:()=>v,metadata:()=>u}),u={layout:`runbook`,title:`#4471 · Engineering resolution: fixed versus retired`,owner:`tmoasz`,status:`closed`,reviewed:`2026-10-28`,signature:`v1.eyJzdWIiOiIyMDI0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMxODY0MzIsImV4cCI6MTc5MzI3MjgzMn0.J_BwV5rNE8OU1Q-gXLH7sfpZj7ghnY18HoR9TPhr3xU`},{layout:d,title:f,owner:p,status:m,reviewed:h,signature:g}=u,_=t(`<h2>Current desk update</h2> <p>The authenticated <a href="https://hq.mega.dev/challenges/what-it-shows" rel="nofollow">course challenge page</a> now publishes an engineering update headed <strong>#4471 · closed 05 oct</strong>.
+That is the source’s stated closure date; this page was reviewed later. The original
+export was dated 2026-10-04 and did not contain this update.</p> <table><thead><tr><th>Problem</th><th>Desk update, verbatim</th><th>GitHub disposition</th></tr></thead><tbody><tr><td>parser</td><td>FIXED — fix(dates): parse dd/mm for eu locales</td><td><a href="https://github.com/tmoasz/mega-s01e03-what-it-shows/issues/1" rel="nofollow">Issue #1</a>: closed, completed</td></tr><tr><td>hint</td><td>WON’T FIX — booking-v3 form retired</td><td><a href="https://github.com/tmoasz/mega-s01e03-what-it-shows/issues/2" rel="nofollow">Issue #2</a>: closed, not planned</td></tr></tbody></table> <p>These outcomes must not be collapsed into “both fixed”. The parser has a reported fix;
+the hint is no longer planned because the affected form was retired. The issue closure
+comments identify the desk update as the authority. This repository does not contain the
+production patch or claim to have independently retested it.</p> <h2>Evidence and historical counts</h2> <p>The <a href="/kb/decisions/0002-evidence-based-triage/">signed triage decision</a> preserves the
+computed report counts, exact memberships, intake disagreements, source timestamps,
+and five desk-note caveats. Those historical counts do not change when issues close.
+The initial course submission accepted the two tickets; acceptance of that step was not
+acceptance of the whole challenge.</p> <p>The five exceptional bodies remain an evidence limitation: four report one-day symptoms,
+and one describes an invite preceding booking. The desk’s closure update does not
+supply individual reproductions for them. Do not invent a timezone fix or erase their
+quotations to make the history look simpler.</p> <h2>Maintaining this knowledge</h2> <p>The old exported incident and decision 0001 remain historical evidence. Decision 0002
+replaces subject-only triage without rewriting the accepted old decision. This separate
+resolution page records the later desk state instead of silently changing that accepted
+analysis. For subsequent status changes, verify the live desk source and issue state,
+then add a dated update with its provenance.</p> <!>`,1);function v(e,t){let l=a(t,[`children`,`$$slots`,`$$events`,`$$legacy`]);s(e,i(()=>l,()=>u,{children:(e,t)=>{var i=_(),a=r(n(i),18);c(a,{get signature(){return g}}),o(e,i)},$$slots:{default:!0}}))}export{v as n,l as t};

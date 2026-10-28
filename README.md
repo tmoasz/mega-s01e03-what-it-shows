@@ -8,6 +8,7 @@ Evidence-backed split of the support desk's ticket #4471. Source export dated 20
 - Signed decision: [`support-kb/src/routes/kb/decisions/0002-evidence-based-triage/+page.svx`](support-kb/src/routes/kb/decisions/0002-evidence-based-triage/+page.svx).
 - Rendered decision: [`support-kb/build/kb/decisions/0002-evidence-based-triage/index.html`](support-kb/build/kb/decisions/0002-evidence-based-triage/index.html), with its CSS/JS under `support-kb/build/`.
 - Original KB source, JSON and accepted decision preserved under `support-kb/src/`.
+- Later engineering update: [signed source](support-kb/src/routes/kb/incidents/4471-resolution/+page.svx) and [rendered page](support-kb/build/kb/incidents/4471-resolution/index.html). The live desk reports the parser fixed and booking-v3 retired; issue #1 is closed as completed and issue #2 as not planned. The accepted triage decision remains unchanged.
 
 The original executable classifier yields 379 parser-route reports and 33 booking-v3 hint-route reports from 412 unique IDs (427 export rows). Five reports within the parser group have conflicting symptoms; the new page quotes and distinguishes them rather than pretending every assignment proves a root cause. Intake tags are not used as the source of truth.
 

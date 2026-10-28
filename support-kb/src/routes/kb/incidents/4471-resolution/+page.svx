@@ -1,0 +1,52 @@
+---
+layout: runbook
+title: '#4471 · Engineering resolution: fixed versus retired'
+owner: tmoasz
+status: closed
+reviewed: '2026-10-28'
+signature: 'v1.eyJzdWIiOiIyMDI0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMxODY0MzIsImV4cCI6MTc5MzI3MjgzMn0.J_BwV5rNE8OU1Q-gXLH7sfpZj7ghnY18HoR9TPhr3xU'
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+## Current desk update
+
+The authenticated [course challenge page](https://hq.mega.dev/challenges/what-it-shows)
+now publishes an engineering update headed **#4471 · closed 05 oct**.
+That is the source's stated closure date; this page was reviewed later. The original
+export was dated 2026-10-04 and did not contain this update.
+
+| Problem | Desk update, verbatim | GitHub disposition |
+| --- | --- | --- |
+| parser | FIXED — fix(dates): parse dd/mm for eu locales | [Issue #1](https://github.com/tmoasz/mega-s01e03-what-it-shows/issues/1): closed, completed |
+| hint | WON'T FIX — booking-v3 form retired | [Issue #2](https://github.com/tmoasz/mega-s01e03-what-it-shows/issues/2): closed, not planned |
+
+These outcomes must not be collapsed into “both fixed”. The parser has a reported fix;
+the hint is no longer planned because the affected form was retired. The issue closure
+comments identify the desk update as the authority. This repository does not contain the
+production patch or claim to have independently retested it.
+
+## Evidence and historical counts
+
+The [signed triage decision](/kb/decisions/0002-evidence-based-triage/) preserves the
+computed report counts, exact memberships, intake disagreements, source timestamps,
+and five desk-note caveats. Those historical counts do not change when issues close.
+The initial course submission accepted the two tickets; acceptance of that step was not
+acceptance of the whole challenge.
+
+The five exceptional bodies remain an evidence limitation: four report one-day symptoms,
+and one describes an invite preceding booking. The desk's closure update does not
+supply individual reproductions for them. Do not invent a timezone fix or erase their
+quotations to make the history look simpler.
+
+## Maintaining this knowledge
+
+The old exported incident and decision 0001 remain historical evidence. Decision 0002
+replaces subject-only triage without rewriting the accepted old decision. This separate
+resolution page records the later desk state instead of silently changing that accepted
+analysis. For subsequent status changes, verify the live desk source and issue state,
+then add a dated update with its provenance.
+
+<RenderStamp {signature} />
